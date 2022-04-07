@@ -7,12 +7,15 @@ Cool Tweets was a fun final project I made for Computer Science IV. The concept 
 This project is currently not working, bc I am not paying for that Sagemaker domain right now. requires Python3.
 
 Clone the project via git:
+
 ```git clone https://github.com/ProfJAT/cool-tweets.git```
 
 Install necessary libraries:
+
 ```pip install -r requirements.txt```
 
 Run Flask app
+
 ```runflask.cmd```
 
 Visit project via 127.0.0.1:5000, classify app at 127.0.0.1/classify?row_id={row_id}
