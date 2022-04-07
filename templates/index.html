@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700" rel="stylesheet">
+        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/124/124021.png">
+        <script src="static/run.js"></script>
+        <title>Cool Tweets</title>
+    </head>
+    <body>
+        <!--Header-->
+        <header>
+            <h1>Do I Think Your Tweet Is Cool?</h1>
+            <h3>This tool analyzes the "coolness" of your tweet</h3>
+        </header>
+        
+        <!--Main content-->
+        <section>
+            <!--Errors-->
+            {% if errors|length > 0 %}
+                <section class="content-block" id="errors">
+                    {% for error in errors %}
+                        <p>Error: {{ error }}</p>
+                    {% endfor %}
+                    <img src="https://cdn2.iconfinder.com/data/icons/media-controls-5/100/close-512.png" id="close-errors" class="close-button" height="20px">
+                </section>
+            {% endif %}
+
+            <button id="analyze" onclick="showPopup()">Analyze a tweet</button>
+
+            <!--Summary statistics-->
+            <section id="summary">
+                {% for class in class_counts %}
+                    <div class="content-block summary-block">
+                        <h2>
+                            {% if class.name == "C" %}
+                                Cool!
+                            {% elif class.name == "NMCOT" %}
+                                NMCOT
+                            {% else %}
+                                Couldn't Be Found
+                            {% endif %}
+                        </h2>
+
+                        <h3>{{ class.all_time }}</h3>
+                        <p>Added today: {{ class.today }}</p>
+                    </div>
+                {% endfor %}
+            </section>
+
+            <!--Workshop-->
+            <section class="content-block">
+                <h2>Workshop A Tweet</h2>
+                <textarea id="workshop-text" maxlength="280" placeholder="Enter your tweet"></textarea>
+                <div id="workshop-classifier">
+                    <p>Model classification:&nbsp;</p>
+                    <!--Courtesy of https://flevix.com/wp-content/uploads/2019/07/Untitled-2.gif-->
+                    <img src="static/loading.gif" height="15px" class="hide" id="workshop-loading">
+                    <p id="displayClass">None</p>
+                </div>
+            </section>
+
+            <!--Analyzed tweets-->
+            <section class="content-block">
+                <h2>Analyzed Tweets</h2>
+                <table>
+                    <tr>
+                        <td>Tweet ID</td>
+                        <td>User Handle</td>
+                        <td>Tweet Text</td>
+                        <td>Classification</td>
+                    </tr>
+                    {% for tweet in tweets %}
+                        <tr class="tweet">
+                            <td>{{ tweet.tweet_id }}</td>
+                            <td>{{ tweet.user }}</td>
+                            <td>{{ tweet.tweet_text }}</td>
+
+                            <td>
+                                {% if tweet.classification == "C" %}
+                                    <p class="rating c">Cool!</p>
+                                {% elif tweet.classification == "NMCOT" %}
+                                    <p class="rating nmcot">NMCOT</p>
+                                {% else %}
+                                    <p class="rating cnd">CND</p>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </section>
+        </section>
+
+        <!--Pop up window-->
+        <section id="pop-up-blocker" class="hide">
+            <div id="pop-up-window" class="content-block">
+                <h2>Search Tweets</h2>
+                <form action="" method="POST">
+                    <input type="text" name="link" placeholder="Tweet link" id="link-input" autocomplete="off">
+                    <input type="image" src="https://cdn-icons-png.flaticon.com/512/60/60758.png" id="search-tweets">
+                </form>
+
+                <img src="https://cdn2.iconfinder.com/data/icons/media-controls-5/100/close-512.png" id="close-pop-up" class="close-button" height="20px">
+            </div>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+Jtweeter4 is the same as Jtweeter3, but:
+    - It uses NLTK's Tweet Tokenizer, rather than simply word_tokenize
+    - It removes periods
+    - It drops the context column
+    - Trained for accuracy

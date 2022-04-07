@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Classifier</title>
+    </head>
+    <body>
+        <blockquote class="twitter-tweet"><a href="https://twitter.com/{{ tweet['tweet_user'] }}/status/{{ tweet['tweet_id'] }}"></a></blockquote>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+        <form method="POST" action="/classify?row_id={{ tweet['row_id'] }}">
+            <input type="radio" id="C" name="classification" value="C">
+            <label for="C">Cool!</label><br>
+
+            <input type="radio" id="NMCOT" name="classification" value="NMCOT">
+            <label for="NMCOT">Not My Cup Of Tea</label><br>
+
+            <input type="radio" id="none" name="classification" value="TDE">
+            <label for="none">Tweet Doesn't Exist</label>
+
+            <input type="submit">
+        </form>
+    </body>
+</html>

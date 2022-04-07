@@ -1,0 +1,7 @@
+Jtweeter1 uses:
+    - all lower case
+    - remove amp, |, :, -
+    - nltk word tokenizer
+    - filter links and nltk stopwords
+
+Total tokens: 3636

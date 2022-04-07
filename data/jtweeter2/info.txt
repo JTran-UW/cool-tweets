@@ -1,0 +1,5 @@
+Jtweeter2 uses:
+    - jtweeter1 settings
+    - wordnet lemmatizer on each token
+
+Total tokens: 3474
