@@ -21,7 +21,7 @@ Run Flask app
 Visit project via 127.0.0.1:5000, classify app at 127.0.0.1/classify?row_id={row_id}
 
 ## How It Was Made
-I created an internal tool called "classify" to create the training datasets. Around 1,422 tweets were classified! What a headache.
+First, I created a dataset of thousands of random tweets from the Twitter API.  I then made an internal tool called "classify" to manually select the training dataset's target values. Around 1,422 tweets were classified! What a headache.
 ![2022-04-06 (3)](https://user-images.githubusercontent.com/46096425/162133012-e1810420-5a3b-4f05-a921-ad357c31167b.png)
 
 Using AWS Sagemaker, Lambda, and API Gateway, I set up a model with ~65% accuracy and deployed it.
