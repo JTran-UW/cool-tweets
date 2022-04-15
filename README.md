@@ -21,7 +21,7 @@ Run Flask app
 Visit project via 127.0.0.1:5000, classify app at 127.0.0.1/classify?row_id={row_id}
 
 ## How It Was Made
-First, I created a dataset of thousands of random tweets from the Twitter API and added a context feature by getting the description meta tag for external links, annotatations from Google's Vision API for pictures, and checked for profanity with the SightEngine API.  I made build_features.py to tokenize and normalize the text, and then I made an internal tool called "classify" to manually select the training dataset's target values. Around 1,422 tweets were classified! What a headache.
+First, I created a dataset of thousands of random tweets from the Twitter API.  I added a context feature by getting the description meta tag for external links, annotatations from Google's Vision API for pictures, and checked for profanity with the SightEngine API.  I made build_features.py to tokenize and normalize the text, and then I made an internal tool called "classify" to manually select the training dataset's target values. Around 1,422 tweets were classified! What a headache.
 ![2022-04-06 (3)](https://user-images.githubusercontent.com/46096425/162133012-e1810420-5a3b-4f05-a921-ad357c31167b.png)
 
 Using AWS Sagemaker, Lambda, and API Gateway, I set up a model with ~65% accuracy and deployed it.
